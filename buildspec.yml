@@ -7,6 +7,7 @@ phases:
   pre_build:
     commands:
       - echo Initializing environment
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 116981808473 --region ap-south-1 --query authorizationToken --output text`
   build:
     commands:
       - echo Build started on `date`
@@ -15,7 +16,10 @@ phases:
     commands:
       - echo Build completed on `date`
       - mvn package
+      - mkdir -p output
+      - cp target/nextwork-web-project.war output/
+      - cd output && zip my-artifact.zip nextwork-web-project.war
 artifacts:
   files:
-    - target/*.war
+    - output/my-artifact.zip
   discard-paths: no
