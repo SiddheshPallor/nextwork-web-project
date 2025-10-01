@@ -15,7 +15,7 @@
     <repositories>
       <repository>
         <id>nextwork-nextwork-devops-cicd</id>
-        <url>https://nextwork-116981808473.d.codeartifact.ap-south-1.amazonaws.com/maven/nextwork-devops-cicd/</url>
+        <url>https://nextwork-025707650562.d.codeartifact.eu-north-1.amazonaws.com/maven/nextwork-devops-cicd/</url>
       </repository>
     </repositories>
   </profile>
@@ -24,9 +24,8 @@
   <mirror>
     <id>nextwork-nextwork-devops-cicd</id>
     <name>nextwork-nextwork-devops-cicd</name>
-    <url>https://nextwork-116981808473.d.codeartifact.ap-south-1.amazonaws.com/maven/nextwork-devops-cicd/</url>
+    <url>https://nextwork-025707650562.d.codeartifact.eu-north-1.amazonaws.com/maven/nextwork-devops-cicd/</url>
     <mirrorOf>*</mirrorOf>
   </mirror>
 </mirrors>
-
 </settings>

@@ -6,20 +6,19 @@ phases:
       java: corretto8
   pre_build:
     commands:
-      - echo Initializing environment
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 116981808473 --region ap-south-1 --query authorizationToken --output text`
+      - echo Logging in to AWS CodeArtifact...
+      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 025707650562 --region eu-north-1 --query authorizationToken --output text`
+      - export CODEARTIFACT_AUTH_TOKEN
   build:
     commands:
       - echo Build started on `date`
-      - mvn clean compile
+      - mvn clean install -s settings.xml
   post_build:
     commands:
       - echo Build completed on `date`
-      - mvn package
-      - mkdir -p output
-      - cp target/nextwork-web-project.war output/
-      - cd output && zip my-artifact.zip nextwork-web-project.war
+      - echo Packaging artifacts...
+      - mvn package -s settings.xml
 artifacts:
   files:
-    - output/my-artifact.zip
+    - target/*.war
   discard-paths: no
